@@ -1,0 +1,29 @@
+{
+  "name": "hr-lax49-mvp",
+  "version": "1.0.0",
+  "description": "Recipe finder with pantry leftovers",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarahma123/hr-lax49-mvp.git"
+  },
+  "keywords": [
+    "Recipes",
+    "food",
+    "ingredients"
+  ],
+  "author": "Sarah Ma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sarahma123/hr-lax49-mvp/issues"
+  },
+  "homepage": "https://github.com/sarahma123/hr-lax49-mvp#readme",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "express": "^4.17.3",
+    "react": "^17.0.2"
+  }
+}
