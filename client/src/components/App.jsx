@@ -1,12 +1,12 @@
 import React,  { useState, useEffect } from 'react';
 import axios from 'axios';
+import Result from './Result.jsx';
 
 function App() {
   //const [commonIngredients, setCommonIngredients] = useState(['salt', 'pepper', 'sugar', 'oil']);
   const [ingredientInput, setIngredientInput] = useState('');
   const [ingredients, setIngredients] = useState([]);
-  const [recipeSuggestions, setRecipeSuggestions] = useState([]);
-
+  const [searchResults, setSearchResults] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -18,12 +18,12 @@ function App() {
 
   async function searchRecipes(e) {
     e.preventDefault();
-    let recommendations = await axios.get('/recipes', {
+    let searchResults = await axios.get('/recipes', {
       params: {
         keywords: ingredients
       }
     });
-    setRecipeSuggestions(recommendations);
+    setSearchResults(searchResults.data);
   }
 
   return (
@@ -41,8 +41,12 @@ function App() {
       </label>
     </form>
 
-    {ingredients.map((ingredient, index) => <li key={`ingredient-${index}`}>{ingredient}</li>)}
-    <button onClick={searchRecipes}>Find Me Some Noms</button>
+    {ingredients.map((ingredient, index) => <li key={`clientIngredient-${index}`}>{ingredient}</li>)}
+
+    <button onClick={searchRecipes}>Find Me Noms</button>
+    <div>
+      {searchResults.map((result, index) => <Result key={`result-${index}`} data={result} pantryIngredients={ingredients}/>)}
+    </div>
   </div>
 
   );

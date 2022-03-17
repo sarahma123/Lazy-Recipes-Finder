@@ -18,10 +18,10 @@ module.exports = {
       }
     });
 
-    //let search = sampleData;
+   // let search = sampleData;
 
-    const suggestions = [];
-    const recipesResults = search.data.hits;
+    const suggestions = [];               //sample data is search.hits
+    const recipesResults = search.data.hits;  //api data is search.data.hits
 
     for (let i = 0; i < recipesResults.length; i++) {
       let currentRecipe = recipesResults[i].recipe;
