@@ -12,19 +12,20 @@ module.exports = {
       params: {
         app_id: appId,
         app_key: appKey,
-        q: `${clientPreferences}`,
-        from: 0,
-        to: 100
+        q: `${clientPreferences}`
       }
     });
 
-   // let search = sampleData;
+    // let search = sampleData;
 
     const suggestions = [];               //sample data is search.hits
     const recipesResults = search.data.hits;  //api data is search.data.hits
 
     for (let i = 0; i < recipesResults.length; i++) {
       let currentRecipe = recipesResults[i].recipe;
+      if (req.query.amount && currentRecipe.ingredients.length !== parseInt(req.query.amount)) {
+        continue;
+      }
       let count = 0;
 
       for (let j = 0; j < clientPreferences.length; j++) {

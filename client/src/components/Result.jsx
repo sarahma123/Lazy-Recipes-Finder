@@ -6,6 +6,31 @@ function Result(props) {
   const [recipeImage, setRecipeImage] = useState(props.data.image);
   const [recipeLink, setRecipeLink] = useState(props.data.url);
 
+  function ingredientStyle(ingredient) {
+    let boldStyle = {
+      color: 'rgb(95, 95, 150)',
+      fontWeight: 'bold'
+    };
+
+    let noBoldStyle = {
+      color: 'rgb(95, 95, 150)',
+    };
+
+    // for (let i = 0; i < pantryIngredients.length; i++) {
+    //   if (ingredient.includes(pantryIngredients[i])) {
+    //     return boldStyle;
+    //   }
+    // }
+    // return noBoldStyle;
+
+
+    if(pantryIngredients.find(item => ingredient.includes(item))) {
+      return boldStyle;
+    } else {
+      return noBoldStyle;
+    }
+  }
+
   function reArrangeRecipeIngredients() {
     var copy = [...recipeIngredients];
     for (let p = pantryIngredients.length - 1; p > -1; p--) {
@@ -19,10 +44,18 @@ function Result(props) {
     }
     return copy;
   }
+  useEffect(() => {setPantryIngredients(props.pantryIngredients)}, [props.pantryIngredients]);
 
   useEffect(() => {
     setRecipeIngredients(reArrangeRecipeIngredients());
-  }, [pantryIngredients])
+  }, [pantryIngredients]);
+
+  function addToPantry(e) {
+    e.preventDefault();
+    let copyPantry = [...pantryIngredients];
+    copyPantry.push(e.target.id);
+    setPantryIngredients(copyPantry);
+  }
 
 
   return (
@@ -35,14 +68,21 @@ function Result(props) {
 
       <div className='ingredients'>
         {recipeIngredients.map((ingredient, index) => <li key={`recipeIngredient-${index}`}>
-        <div className='container'>
-          <span>
-            {ingredient.text}
-          </span>
-          <span style={{ color: 'rgb(95, 95, 150)' }} className='oneIngredient'>
-            {ingredient.food}
-          </span>
-        </div>
+          <div className='container'>
+            <span>
+              {ingredient.text}
+            </span>
+            <span
+              id={ingredient.food}
+              style={ingredientStyle(ingredient.food)}
+              className='oneIngredient'
+              onClick={(e) => {
+                addToPantry(e);
+                props.onClick(e);
+              }}>
+              {ingredient.food}
+            </span>
+          </div>
         </li>)}
       </div>
 
