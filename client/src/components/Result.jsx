@@ -8,7 +8,7 @@ function Result(props) {
 
   function ingredientStyle(ingredient) {
     let boldStyle = {
-      color: 'rgb(95, 95, 150)',
+      color: 'rgb(75, 75, 116)',
       fontWeight: 'bold'
     };
 
@@ -24,7 +24,7 @@ function Result(props) {
     // return noBoldStyle;
 
 
-    if(pantryIngredients.find(item => ingredient.includes(item))) {
+    if (pantryIngredients.find(item => ingredient.includes(item))) {
       return boldStyle;
     } else {
       return noBoldStyle;
@@ -44,7 +44,7 @@ function Result(props) {
     }
     return copy;
   }
-  useEffect(() => {setPantryIngredients(props.pantryIngredients)}, [props.pantryIngredients]);
+  useEffect(() => { setPantryIngredients(props.pantryIngredients) }, [props.pantryIngredients]);
 
   useEffect(() => {
     setRecipeIngredients(reArrangeRecipeIngredients());
@@ -59,23 +59,28 @@ function Result(props) {
 
 
   return (
-    <div>
-      <a
-        href={recipeLink}
-        target='_blank'>
-        <img src={recipeImage} />
-      </a>
+    <div className='recipe-card-container'>
+      <div>
+        <a href={recipeLink} target='_blank'>
+          <h4>{props.data.label}</h4>
+        </a>
+        <a
+          href={recipeLink}
+          target='_blank'>
+          <img src={recipeImage} />
+        </a>
+      </div>
 
-      <div className='ingredients'>
+      <div className='all-ingredients-container'>
         {recipeIngredients.map((ingredient, index) => <li key={`recipeIngredient-${index}`}>
-          <div className='container'>
-            <span>
+          <div className='recipe-ingredients-container'>
+            <span className='recipe-text'>
               {ingredient.text}
             </span>
             <span
               id={ingredient.food}
+              className='recipe-one-word'
               style={ingredientStyle(ingredient.food)}
-              className='oneIngredient'
               onClick={(e) => {
                 addToPantry(e);
                 props.onClick(e);

@@ -19,14 +19,19 @@ function App() {
 
   async function searchRecipes(e) {
     e.preventDefault();
-    let getResults = await axios.get('/recipes', {
-      params: {
-        keywords: ingredients,
-        amount: amountOfIngredients
-      }
-    });
-    setSearchResults([]);
-    setSearchResults(getResults.data);
+    if(!ingredients.length) {
+      alert('PLEASE enter some ingredients you have :)');
+    } else {
+      let getResults = await axios.get('/recipes', {
+        params: {
+          keywords: ingredients,
+          amount: amountOfIngredients
+        }
+      });
+      setSearchResults([]);
+      setSearchResults(getResults.data);
+    }
+
   }
 
   function deletePantryIngredient(e, deleteIngredient) {
@@ -42,12 +47,11 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Recipe Search</h1>
+    <div className='all-container'>
+      <h1>Lazy Recipe Search</h1>
       <form>
         <label>
-          ingredient
-          <input
+          ingredient <input
             id='ingredient'
             value={ingredientInput}
             onChange={(e) => setIngredientInput(e.target.value)}
@@ -58,8 +62,7 @@ function App() {
 
       <form>
         <label>
-          # of ingredients
-          <input
+          # of ingredients <input
             id='numberOfIngredients'
             onChange={(e) => setAmount(e.target.value)}
           ></input>
