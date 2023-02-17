@@ -17,16 +17,13 @@ Once the project moves into development, the press release can be used as a touc
  -->
 
 ## Heading ##
-  > Recipe Finder from Pantry Leftovers
-
-## Sub-Heading ##
-  > For those who want to throw together a meal with just the ingredients they have on hand.
+  > Lazy Recipes Finders
 
 ## Summary ##
-  > A recipe searcher based on what ingredients you already have on hand. You will enter what ingredients you want to use, and Recipe Finder will generate recipes that match those ingredients!
+  > A recipe searcher based on what ingredients you already have on hand. You will enter what ingredients you want to use, and/or how many ingredients to use, and Lazy Recipes Finder will generate recipes that match those ingredients!
 
 ## Problem ##
-  > Meal planning should not be dictated by recipes but you should dictate the recipes! For those who don't have time to grocery shop or only want to eat certain things.
+  > Too tired to think of a recipe to find? Why not just find some recipes starting with some ingredients you want to use? For those who don't have time to grocery shop or only want to use up certain ingredients.
 
 ## Solution ##
   > An app that caters to YOUR specifications.
@@ -35,13 +32,12 @@ Once the project moves into development, the press release can be used as a touc
   > "Be in charge of what you eat!"
 
 ## How to Get Started ##
-  > Enter in ingredients on the list.
-    Confirm the "Always on Hand" ingredients.
-    Click "Get that Bread" and watch as recipes are generated for you.
-    Last step is to select a recipe to follow!
+  > 1. Enter in ingredients on the list.
+  > 2. Enter in how many ingredients you want to use in a recipe
+  > 3. Click "Find Me Noms" and watch as recipes are generated for you.
+  > 4. Browse, Choose, or Repeat!
 
-## Customer Quote ##
-  > "Wow I feel like I've been freed from the recipe dictators"
+![Example!](http://g.recordit.co/ZzlawpSw1n.gif)
 
-## Closing and Call to Action ##
-  > Please let us know at customers@recipefinder.com if you have any feedback or would like to see different recipes.
+## Some Additional Features ##
+  > The recipes listed will show all the ingredients they require on the right hand side. Click on any of those ingredients to also add to your ingredient search list!
